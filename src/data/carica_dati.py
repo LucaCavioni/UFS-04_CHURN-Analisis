@@ -1,13 +1,12 @@
-from matplotlib.pyplot import get
-import os
 import pandas as pd
-import feature.pulizia_dati as a
+import sys, os
+sys.path.append('src')
+from feature.pulizia_dati import pulisci_df
 
 def get_data():
-    # os.chdir('..\\')
-    # from feature.pulizia_dati import pulisci_df
-    df = pd.read_csv('../../data/WA_Fn-UseC_-Telco-Customer-Churn.csv')
-    df = a.pulisci_df(df)
+    df = pd.read_csv('dati\WA_Fn-UseC_-Telco-Customer-Churn.csv')
+    df = pulisci_df(df)
     return df
 
-get_data()
+if __name__ == '__main__':
+    print(get_data())
