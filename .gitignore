@@ -4,3 +4,8 @@ dati/About Dataset.docx
 dati/About Dataset.txt
 dati/~$out Dataset.docx
 .gitignore
+data/WA_Fn-UseC_-Telco-Customer-Churn.csv
+data/About Dataset.docx
+src/feature/__pycache__/__init__.cpython-38.pyc
+src/feature/__pycache__/pulizia_dati.cpython-38.pyc
+
