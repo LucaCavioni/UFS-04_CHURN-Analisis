@@ -6,9 +6,12 @@ from data.carica_dati import get_data
 import pickle
 
 def train_model(X_train, Y_train):
-
-    # X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=0.20,random_state=42)
-
+    '''train del modello attraverso le features di train_model
+    
+    :param df or arraylike type X_train: features di input
+    :param series or arraylike Y_train: target
+    :return RandomForestClassifier: modello di classificazione 
+    '''    
     model = RandomForestClassifier(max_depth= 15, n_estimators = 300)
     model.fit(X_train,Y_train)
 
