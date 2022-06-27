@@ -9,3 +9,13 @@ data/About Dataset.docx
 src/feature/__pycache__/__init__.cpython-38.pyc
 src/feature/__pycache__/pulizia_dati.cpython-38.pyc
 
+src/data/__pycache__/__init__.cpython-39.pyc
+src/data/__pycache__/carica_dati.cpython-39.pyc
+src/feature/__pycache__/__init__.cpython-39.pyc
+src/feature/__pycache__/pulizia_dati.cpython-39.pyc
+src/__pycache__/__init__.cpython-38.pyc
+src/data/__pycache__/__init__.cpython-38.pyc
+src/data/__pycache__/carica_dati.cpython-38.pyc
+src/feature/__pycache__/__init__.cpython-38.pyc
+src/feature/__pycache__/pulizia_dati.cpython-38.pyc
+src/__pycache__/__init__.cpython-39.pyc
