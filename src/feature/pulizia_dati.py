@@ -1,12 +1,17 @@
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
 
 def pulisci_df(df):
-    # elimino i dati null e definisco il tipo della colonna
-    df = df.drop(df[df['TotalCharges'] == ' '].index)
-    df.TotalCharges = df['TotalCharges'].astype(float)
-
     # fattorizzo le colonne object
-    df = df.select_dtypes(include='object')
-    df = df.apply(lambda x: x.factorize()[0])
+    ls_colonne = ['SeniorCitizen', 'Partner', 'Dependents', 'MultipleLines', 'InternetService', 'OnlineSecurity',
+                  'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling', 'PaymentMethod']
+    df = pd.get_dummies(df, ls_colonne, drop_first=True)
+    
+    # scaler delle colonne continue
+    scaler = MinMaxScaler()
+    tenure = scaler.fit_transform(df[['tenure']])
+    monthly = scaler.fit_transform(df[['MonthlyCharges']])
+    df['tenure'] = tenure
+    df['MonthlyCharges'] = monthly
     return df
