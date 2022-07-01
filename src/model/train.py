@@ -1,5 +1,5 @@
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV, train_test_split
 import sys
 sys.path.append('src')
 from data.carica_dati import get_data
@@ -19,4 +19,10 @@ def train_model(X_train, Y_train):
 
     return model
 
-# TODO tuning
+def tuning(X_train, Y_train, kargs**):
+    # TODO fcontrollo sulle chiavi del kargs
+    model = RandomForestClassifier()
+
+    clf = GridSearchCV(model, param_grid=kargs, n_jobs=-1, cv=5)
+    clf.fit(X_train, Y_train)
+    return clf
