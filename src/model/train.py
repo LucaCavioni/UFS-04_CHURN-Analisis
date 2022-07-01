@@ -18,3 +18,5 @@ def train_model(X_train, Y_train):
     pickle.dump(model, open('model/model.sav', 'wb'))
 
     return model
+
+# TODO tuning
