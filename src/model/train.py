@@ -19,7 +19,7 @@ def train_model(X_train, Y_train):
 
     return model
 
-def tuning(X_train, Y_train, kargs**):
+def tuning(X_train, Y_train, **kargs):
     # TODO fcontrollo sulle chiavi del kargs
     model = RandomForestClassifier()
 
