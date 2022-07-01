@@ -4,8 +4,14 @@ import pickle
 
 
 def pulisci_df(df: pd.DataFrame):
+    '''ritorna un dataframe pulito utilizzando trainando e salvando i modelli per il preprocessing dei dati
+
+    :param pd.DataFrame df: df da pulire
+    :return df
+    '''    
     # elimino le colonne inutili
     df.drop(['customerID','gender','PhoneService','Contract'], axis=1, inplace=True)
+    
     # elimino i dati null e definisco il tipo della colonna
     df = df.drop(df[df['TotalCharges'] == ' '].index)
     df.TotalCharges = df['TotalCharges'].astype(float)
@@ -28,6 +34,12 @@ def pulisci_df(df: pd.DataFrame):
     return df
 
 def preprocessing(df: pd.DataFrame):
+    '''ritorna un dataframe pulito utilizzando i modelli salvati in precedenza per il preprocessing dei dati
+
+    :param pd.DataFrame df: df da pulire
+    :return df
+    '''    
+    # ciclo che elimina se trova le colonne inutili
     for e in df.copy().columns:
         if e in ['customerID','gender','PhoneService','Contract']:
             df.drop(columns=e, inplace=True)
@@ -37,12 +49,10 @@ def preprocessing(df: pd.DataFrame):
         df = df.drop(df[df['TotalCharges'] == ' '].index)
         df.TotalCharges = df['TotalCharges'].astype(float)
     try:
-        oe      = pickle.load(open('model/oe_model.sav', 'rb'))
-       
-        print(df.select_dtypes(include='object').shape)
-       
+        # carico e utilizzo l'OrdinalEncoder
+        oe      = pickle.load(open('model/oe_model.sav', 'rb'))       
         df[df.select_dtypes(include='object').columns] = oe.transform(df.select_dtypes(include='object'))
-    
+        # carico e utilizzo il MinMaxScaler 
         scaler  = pickle.load(open('model/scaler_model.sav', 'rb'))
         tenure  = scaler.transform(df[['tenure']])
         monthly = scaler.transform(df[['MonthlyCharges']])
