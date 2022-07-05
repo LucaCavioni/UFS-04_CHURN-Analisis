@@ -1,10 +1,10 @@
 from data.carica_dati import get_data
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 import sys
 sys.path.append('src')
 from model.predict import use_model
 from model.train import train_model
-
 
 
 df = get_data()
@@ -18,3 +18,4 @@ model = train_model(X_train, Y_train)
 pred_pass = use_model(X_test, model)
 pred_load = use_model(X_test)
 
+print(accuracy_score(y_pred=pred_load, y_true=Y_test))
