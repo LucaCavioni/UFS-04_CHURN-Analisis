@@ -4,7 +4,7 @@ import pickle
 
 
 def pulisci_df(df: pd.DataFrame):
-    '''ritorna un dataframe pulito utilizzando trainando e salvando i modelli per il preprocessing dei dati
+    '''ritorna un dataframe pulito utilizzando, trainando e salvando i modelli per il preprocessing dei dati
 
     :param pd.DataFrame df: df da pulire
     :return df
@@ -16,7 +16,7 @@ def pulisci_df(df: pd.DataFrame):
     df = df.drop(df[df['TotalCharges'] == ' '].index)
     df.TotalCharges = df['TotalCharges'].astype(float)
     
-    # utilizzo la ordinal encorder per le colonne object
+    # utilizzo la ordinal encoder per le colonne object
     oe = OrdinalEncoder()
     print(df.select_dtypes(include='object').shape)
     df[df.select_dtypes(include='object').columns] = oe.fit_transform(df.select_dtypes(include='object'))
